@@ -1,4 +1,4 @@
-import express from "express"
+import express, { json } from "express"
 import mysql from "mysql2"
 
 const pool = mysql.createPool({
@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }))
 const port = 3000
 
 function validateData(input) {
-    if ((typeof input != "string") || (input == undefined || input.trim() == "")) {
+    if ( (typeof input != "string") || (input == undefined || input.trim() == "")) {
         return false
     }
     return true
@@ -69,7 +69,6 @@ app.patch("/books/:id", async (req, res) => { // partial modification, just one 
     const id = req.params.id
 
     const body = req.body
-
     const values = Object.values(body)
 
     if ( (values.find((value) => validateData(value))) == undefined) {
@@ -114,27 +113,51 @@ app.patch("/books/:id", async (req, res) => { // partial modification, just one 
 
 app.put("/books/:id", async (req, res) => { // replaces an entire resource
     const id = req.params.id
-    const {title, author} = req.body
+    const body = req.body
 
-    if (!validateData(title, author)) {
+    const keys = Object.keys(body)
+
+    const values = Object.values(body)
+
+    let allowedColumns = await pool.query("describe books")
+    allowedColumns = allowedColumns[0].map((column) => column.Field)
+    allowedColumns = allowedColumns.filter(column => column != "id")
+
+    const availableColumns = [] // "author"
+    const availableColumnsValues = [] // "1984"
+    let availableColumnsQuery = [] // title = ? , ...
+    
+    const hasAllColumns = keys.every((key) => allowedColumns.includes(key))
+
+    if (!hasAllColumns) {
         return res.status(400).end()
     }
 
-    const formattedTitle = title.trim()
+    if ( (values.find((value) => !validateData(value)) != undefined) ) {
+        return res.status(400).end()
+    }
 
-    const formattedAuthor = author.trim()
-
-    await pool.query("update books set title = ?, author = ? where id = ?", [formattedTitle, formattedAuthor, id]).then(async result => {
-        if (result[0].affectedRows != 0) {
-            return res.status(200).json({"message": `Book ${id} updated succesfully`})
+    Object.entries(body).forEach(([key, value]) => {
+        if (validateData(value)) {
+            availableColumns.push(key)
+            availableColumnsValues.push(value.trim())
         }
-        else {
-            const selectedBook = await pool.query("select * from books where id = ?",[id])
+    })
+
+    availableColumnsQuery = availableColumns.map((column) => `${column} = ?`)
+
+    const querySQL = `update books set ${availableColumnsQuery.join(", ")} where id = ?`
+    
+    availableColumnsValues.push(id)
+
+    await pool.query(querySQL, availableColumnsValues).then(async (result) => {
+        if (result[0].affectedRows == 0) {
+            const selectedBook = await pool.query(`select * from books where id = ?`, [id])
             if (selectedBook[0].length == 0) {
-                return res.status(404).end()
+                return res.status(404).json({"error": "Book not found"})
             }
-            return res.status(200).json({message: `Book ${id} already has these values`})
         }
+        return res.status(204).end()
     })
 })
 
