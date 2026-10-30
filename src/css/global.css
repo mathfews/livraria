@@ -364,7 +364,8 @@ input:focus, select:focus, textarea:focus, button:focus-visible {
   .site-footer {
     padding: var(--space-24) var(--space-40);
   }
-  .page-container {
+  .page-container,
+  .main-container {
     padding: var(--space-32) var(--space-40) var(--space-48);
   }
   .page-title {
@@ -377,7 +378,7 @@ input:focus, select:focus, textarea:focus, button:focus-visible {
     height: 76px;
     padding: 0 var(--space-24);
   }
-  .nav-links, .header-meta, .site-header .btn {
+  .nav-links, .header-meta, .site-header .btn, .site-header .library-status-badge {
     display: none;
   }
   .menu-btn {
@@ -387,8 +388,11 @@ input:focus, select:focus, textarea:focus, button:focus-visible {
     padding: var(--space-24);
     height: auto;
     gap: var(--space-12);
+    flex-direction: column;
+    text-align: center;
   }
-  .page-container {
+  .page-container,
+  .main-container {
     padding: var(--space-24) var(--space-24) var(--space-40);
   }
   .page-header-block {
