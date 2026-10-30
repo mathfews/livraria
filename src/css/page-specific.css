@@ -1,0 +1,685 @@
+/* page-specific.css — Screen-specific layouts & responsive adjustments */
+
+/* ==========================================================================
+   Home / Landing Page
+   ========================================================================== */
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-48);
+  padding: var(--space-72) var(--space-64);
+  width: 100%;
+}
+
+.hero-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  max-width: 650px;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: 68px;
+  line-height: 1.1;
+  color: var(--color-text-ink);
+  letter-spacing: -0.02em;
+}
+
+.hero-title .highlight {
+  font-weight: 700;
+  color: var(--color-brand-emphasis);
+}
+
+.hero-description {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+}
+
+.hero-note {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.hero-illustration {
+  width: 340px;
+  height: 265px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-illustration img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Benefits Section */
+.benefits-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-32);
+  padding: 0 var(--space-64) var(--space-64);
+  width: 100%;
+}
+
+.benefits-title {
+  font-family: var(--font-display);
+  font-size: 48px;
+  line-height: 1.15;
+  color: var(--color-text-ink);
+}
+
+.benefits-title .highlight {
+  font-weight: 700;
+  color: var(--color-brand-emphasis);
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-24);
+  width: 100%;
+}
+
+.benefit-card {
+  background-color: var(--color-brand-emphasis);
+  border-radius: var(--radius-card);
+  padding: var(--space-24);
+  color: var(--color-surface-white);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.benefit-icon-well {
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.benefit-icon-well img {
+  height: 32px;
+  width: 44px;
+  object-fit: contain;
+}
+
+.benefit-card-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 1.15;
+}
+
+.benefit-card-desc {
+  font-size: 14px;
+  line-height: 1.65;
+  opacity: 0.95;
+}
+
+/* Home CTA Banner */
+.home-cta-section {
+  background-color: var(--color-surface-paper);
+  padding: var(--space-56) var(--space-64);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-24);
+  text-align: center;
+  width: 100%;
+}
+
+.home-cta-title {
+  font-family: var(--font-display);
+  font-size: 48px;
+  line-height: 1.15;
+}
+
+.home-cta-title .highlight {
+  font-weight: 700;
+  color: var(--color-brand-emphasis);
+}
+
+.home-cta-desc {
+  font-size: 16px;
+  color: var(--color-text-secondary);
+}
+
+/* ==========================================================================
+   Catalog Page
+   ========================================================================== */
+.catalog-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  width: 100%;
+  margin-bottom: var(--space-32);
+}
+
+.catalog-summary-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-text-ink);
+  margin-bottom: var(--space-24);
+}
+
+.catalog-grid-icon img {
+  width: 18px;
+  height: 18px;
+}
+
+.catalog-results-sublink {
+  color: var(--color-primary-action);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.catalog-results-sublink:hover {
+  text-decoration: underline;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-24);
+  width: 100%;
+}
+
+/* Empty State / No Results */
+.empty-state-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-56) 0;
+  gap: var(--space-24);
+  width: 100%;
+}
+
+.empty-state-icon-well {
+  background-color: var(--color-surface-warm);
+  width: 96px;
+  height: 96px;
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-state-icon-well img {
+  width: 40px;
+  height: 40px;
+}
+
+.empty-state-illustration {
+  width: 140px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-state-illustration img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.empty-state-message {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  max-width: 480px;
+}
+
+.empty-state-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.15;
+  color: var(--color-text-ink);
+}
+
+.empty-state-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.start-simple-tip {
+  background-color: var(--color-surface-paper);
+  border-radius: var(--radius-card);
+  padding: var(--space-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  width: 100%;
+  margin-top: var(--space-32);
+}
+
+.start-simple-tip-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--color-brand-emphasis);
+}
+
+.start-simple-tip-desc {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Add & Edit Book Form Pages
+   ========================================================================== */
+.form-layout {
+  display: flex;
+  gap: var(--space-40);
+  width: 100%;
+}
+
+.form-fields-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-32);
+}
+
+.form-cover-column {
+  width: 284px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+  width: 100%;
+}
+
+.form-section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--color-text-ink);
+}
+
+.form-row {
+  display: flex;
+  gap: var(--space-20);
+  width: 100%;
+}
+
+.form-row > * {
+  flex: 1;
+}
+
+.form-actions-footer {
+  border-top: 1px solid var(--color-border-quiet);
+  padding-top: var(--space-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  width: 100%;
+  margin-top: var(--space-32);
+}
+
+.form-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-12);
+  width: 100%;
+}
+
+.form-actions-guidance {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  text-align: right;
+  width: 100%;
+}
+
+/* ==========================================================================
+   Book Details Page
+   ========================================================================== */
+.details-layout {
+  display: flex;
+  gap: var(--space-48);
+  width: 100%;
+  margin-top: var(--space-24);
+}
+
+.details-cover-column {
+  width: 320px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.details-cover-well {
+  background-color: var(--color-surface-paper);
+  height: 440px;
+  border-radius: var(--radius-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.details-book-cover {
+  width: 232px;
+  height: 334px;
+  border-radius: var(--radius-book-cover);
+  padding: 28px;
+  box-shadow: var(--shadow-book-cover);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  background-color: #344F43;
+}
+
+.details-book-cover .book-cover-title {
+  font-size: 31px;
+}
+
+.details-book-cover .book-cover-emblem {
+  width: 88px;
+  height: 88px;
+}
+
+.details-book-cover .book-cover-author {
+  font-size: 17px;
+}
+
+.library-status-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.library-status-badge img {
+  width: 18px;
+  height: 18px;
+}
+
+.details-content-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.details-header-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.details-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 52px;
+  line-height: 1.15;
+  color: var(--color-text-ink);
+  letter-spacing: -0.02em;
+}
+
+.details-author {
+  font-family: var(--font-editorial);
+  font-size: 26px;
+  line-height: 1.4;
+  color: var(--color-brand-emphasis);
+}
+
+.details-actions-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.bibliographic-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+  margin-top: var(--space-8);
+}
+
+.bibliographic-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--color-text-ink);
+  margin-bottom: var(--space-12);
+}
+
+.bibliographic-row {
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding: var(--space-16) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.bibliographic-row.split-row {
+  flex-direction: row;
+  gap: var(--space-24);
+  border-bottom: none;
+  padding: 0;
+}
+
+.bibliographic-row.split-row > div {
+  flex: 1;
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding: var(--space-16) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.bib-label {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.bib-value {
+  font-size: 14px;
+  color: var(--color-text-ink);
+  line-height: 1.5;
+}
+
+.description-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  width: 100%;
+  margin-top: var(--space-12);
+}
+
+.description-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--color-text-ink);
+}
+
+.description-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+/* ==========================================================================
+   404 Page
+   ========================================================================== */
+.error-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-40) 0;
+  gap: var(--space-8);
+  width: 100%;
+}
+
+.error-code {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 72px;
+  line-height: 1.1;
+  color: var(--color-brand-emphasis);
+}
+
+.error-illustration {
+  width: 230px;
+  height: 179px;
+  margin: var(--space-24) 0;
+}
+
+.error-illustration img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.error-secondary-link {
+  font-size: 14px;
+  color: var(--color-primary-action);
+  margin-top: var(--space-16);
+  cursor: pointer;
+}
+
+.error-secondary-link:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints: Tablet (834px) & Mobile (390px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-section {
+    padding: var(--space-48) var(--space-40);
+  }
+  .hero-title {
+    font-size: 52px;
+  }
+  .benefits-section {
+    padding: 0 var(--space-40) var(--space-48);
+  }
+  .home-cta-section {
+    padding: var(--space-48) var(--space-40);
+  }
+  .books-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-16);
+  }
+  .details-layout {
+    gap: var(--space-32);
+  }
+  .details-cover-column {
+    width: 280px;
+  }
+  .details-title {
+    font-size: 44px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+    padding: var(--space-40) var(--space-24) var(--space-48);
+    gap: var(--space-32);
+  }
+  .hero-title {
+    font-size: 48px;
+  }
+  .hero-illustration {
+    width: 258px;
+    height: 200px;
+  }
+  .benefits-section {
+    padding: 0 var(--space-24) var(--space-48);
+  }
+  .benefits-title {
+    font-size: 36px;
+  }
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-16);
+  }
+  .home-cta-section {
+    padding: var(--space-40) var(--space-24);
+  }
+  .home-cta-title {
+    font-size: 36px;
+  }
+  .books-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-16);
+  }
+  .form-layout {
+    flex-direction: column;
+    gap: var(--space-32);
+  }
+  .form-cover-column {
+    width: 100%;
+  }
+  .form-row {
+    flex-direction: column;
+  }
+  .details-layout {
+    flex-direction: column;
+    gap: var(--space-32);
+  }
+  .details-cover-column {
+    width: 100%;
+  }
+  .details-cover-well {
+    height: 360px;
+  }
+  .details-title {
+    font-size: 36px;
+  }
+  .bibliographic-row.split-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  .form-actions-row {
+    flex-direction: column;
+    width: 100%;
+  }
+  .form-actions-row .btn {
+    width: 100%;
+  }
+  .form-actions-guidance {
+    text-align: center;
+  }
+}

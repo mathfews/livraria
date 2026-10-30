@@ -1,0 +1,669 @@
+/* components.css — Reusable Livraria UI components */
+
+/* --- Book Card & Cover --- */
+.book-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  width: 100%;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-2px);
+}
+
+.cover-well {
+  background-color: var(--color-surface-paper);
+  height: 284px;
+  border-radius: var(--radius-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.book-cover {
+  width: 164px;
+  height: 236px;
+  border-radius: var(--radius-book-cover);
+  padding: 20px;
+  box-shadow: var(--shadow-book-cover);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  user-select: none;
+  background-color: #344F43;
+}
+
+.spine-rule {
+  position: absolute;
+  left: 5px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 2;
+}
+
+.book-cover-title {
+  font-family: var(--font-editorial);
+  font-size: 22px;
+  line-height: 1.18;
+  color: #F8EBD2;
+  word-break: break-word;
+  z-index: 2;
+}
+
+.book-cover-emblem {
+  width: 62px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.book-cover-emblem img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.book-cover-author {
+  font-family: var(--font-display);
+  font-size: 12px;
+  line-height: 1.2;
+  color: #F8EBD2;
+  word-break: break-word;
+  z-index: 2;
+}
+
+.book-cover-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.cover-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-16);
+  height: 100%;
+  width: 100%;
+}
+
+.cover-placeholder img {
+  width: 64px;
+  height: 64px;
+}
+
+.cover-placeholder-text {
+  font-family: var(--font-display);
+  color: var(--color-brand-emphasis);
+  font-size: 20px;
+}
+
+.book-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.book-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.15;
+  color: var(--color-text-ink);
+  word-break: break-word;
+}
+
+.book-author {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+.book-year {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+/* --- Search Field --- */
+.search-field-container {
+  width: 100%;
+  background: var(--color-surface-white);
+  border: 1px solid var(--color-border-quiet);
+  height: 52px;
+  border-radius: var(--radius-control);
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: 0 var(--space-16);
+  transition: border-color 0.15s ease;
+}
+
+.search-field-container:focus-within,
+.search-field-container.has-query {
+  border: 2px solid var(--color-primary-action);
+}
+
+.search-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: var(--color-text-ink);
+  background: transparent;
+}
+
+.search-input::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.search-clear-btn {
+  width: 44px;
+  height: 44px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: var(--radius-control);
+}
+
+.search-clear-btn.visible {
+  display: flex;
+}
+
+.search-clear-btn img {
+  width: 18px;
+  height: 18px;
+}
+
+.search-shortcut-badge {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+/* --- Filter Row & Select Controls --- */
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-12);
+  width: 100%;
+}
+
+.select-control-wrapper {
+  position: relative;
+  min-width: 160px;
+}
+
+.select-control {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: var(--color-surface-white);
+  border: 1px solid var(--color-border-quiet);
+  border-radius: var(--radius-control);
+  height: 48px;
+  width: 100%;
+  padding: 0 36px 0 12px;
+  font-size: 13px;
+  color: var(--color-text-ink);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.select-control.active-filter {
+  background-color: var(--color-surface-warm);
+  border-color: var(--color-primary-action);
+  color: var(--color-primary-action);
+}
+
+.select-chevron {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+/* --- Applied Filters & Chips --- */
+.applied-filters-row {
+  display: none;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-12);
+  width: 100%;
+  margin-top: var(--space-4);
+}
+
+.applied-filters-row.visible {
+  display: flex;
+}
+
+.filter-chip {
+  background-color: var(--color-surface-warm);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  min-height: 44px;
+  padding: 8px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  color: var(--color-primary-action);
+}
+
+.filter-chip-remove {
+  width: 14px;
+  height: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.filter-chip-remove img {
+  width: 14px;
+  height: 14px;
+}
+
+.btn-clear-filters {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-primary-action);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn-clear-filters:hover {
+  text-decoration: underline;
+}
+
+/* --- Form Fields & Validation --- */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  width: 100%;
+}
+
+.field-label {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-text-ink);
+  line-height: 1.5;
+}
+
+.field-label .required-star {
+  color: var(--color-primary-action);
+}
+
+.field-label .optional-tag {
+  color: var(--color-text-secondary);
+  font-weight: 400;
+}
+
+.input-control {
+  background-color: var(--color-surface-white);
+  border: 1px solid var(--color-border-quiet);
+  border-radius: var(--radius-control);
+  min-height: 48px;
+  padding: 14px;
+  font-size: 14px;
+  color: var(--color-text-ink);
+  width: 100%;
+  transition: border-color 0.15s ease;
+}
+
+textarea.input-control {
+  min-height: 164px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.input-control:focus {
+  border: 2px solid var(--color-primary-action);
+  outline: none;
+}
+
+.form-group.has-error .input-control {
+  border-color: var(--color-destructive);
+}
+
+.field-guidance {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.field-error-message {
+  font-size: 12px;
+  color: var(--color-destructive);
+  line-height: 1.5;
+  display: none;
+}
+
+.form-group.has-error .field-error-message {
+  display: block;
+}
+
+.form-group.has-error .field-guidance {
+  display: none;
+}
+
+/* --- Cover Upload Dropzone --- */
+.upload-dropzone {
+  background-color: var(--color-surface-paper);
+  border: 1px dashed var(--color-border-quiet);
+  border-radius: var(--radius-card);
+  padding: var(--space-24);
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-16);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.upload-dropzone.drag-over {
+  border-color: var(--color-primary-action);
+  background-color: var(--color-surface-warm);
+}
+
+.upload-icon-well {
+  background-color: var(--color-surface-warm);
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-icon-well img {
+  width: 26px;
+  height: 26px;
+}
+
+.upload-prompt {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.file-input-hidden {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.upload-error-alert {
+  background-color: var(--color-destructive-surface);
+  padding: var(--space-16);
+  border-radius: var(--radius-control);
+  color: var(--color-destructive);
+  font-size: 13px;
+  width: 100%;
+  display: none;
+}
+
+.upload-error-alert.visible {
+  display: block;
+}
+
+/* Uploaded Preview in Edit/Add Book */
+.uploaded-preview-container {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-16);
+  width: 100%;
+}
+
+.uploaded-preview-container.has-preview {
+  display: flex;
+}
+
+.mini-book-cover {
+  width: 130px;
+  height: 187px;
+  border-radius: var(--radius-book-cover);
+  padding: 15px;
+  box-shadow: var(--shadow-book-cover);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  background-color: #344F43;
+}
+
+.mini-book-cover .book-cover-title {
+  font-size: 17px;
+}
+
+.mini-book-cover .book-cover-emblem {
+  width: 49px;
+  height: 49px;
+}
+
+.mini-book-cover .book-cover-author {
+  font-size: 10px;
+}
+
+.upload-file-meta {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+.btn-remove-cover {
+  color: var(--color-destructive);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn-remove-cover:hover {
+  text-decoration: underline;
+}
+
+/* --- Delete Confirmation Dialog Modal --- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(48, 41, 35, 0.4);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  padding: var(--space-24);
+}
+
+.modal-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-dialog {
+  background-color: var(--color-surface-white);
+  border-radius: var(--radius-card);
+  padding: var(--space-32);
+  box-shadow: var(--shadow-card);
+  width: 500px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  transform: translateY(12px);
+  transition: transform 0.2s ease;
+}
+
+.modal-backdrop.open .modal-dialog {
+  transform: translateY(0);
+}
+
+.dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.destructive-symbol {
+  background-color: var(--color-destructive-surface);
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.destructive-symbol img {
+  width: 22px;
+  height: 22px;
+}
+
+.dialog-close-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-control);
+}
+
+.dialog-close-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.dialog-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.dialog-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.15;
+  color: var(--color-text-ink);
+}
+
+.dialog-desc {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.dialog-book-preview {
+  background-color: var(--color-surface-paper);
+  border-radius: var(--radius-control);
+  padding: var(--space-16);
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  width: 100%;
+}
+
+.dialog-mini-cover {
+  width: 52px;
+  height: 75px;
+  border-radius: var(--radius-book-cover);
+  padding: 6px;
+  box-shadow: var(--shadow-book-cover);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  background-color: #344F43;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.dialog-mini-cover .book-cover-title {
+  font-size: 7px;
+}
+
+.dialog-mini-cover .book-cover-emblem {
+  width: 20px;
+  height: 20px;
+}
+
+.dialog-mini-cover .book-cover-author {
+  font-size: 4px;
+}
+
+.dialog-book-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dialog-book-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--color-text-ink);
+}
+
+.dialog-book-author {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.dialog-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  width: 100%;
+}
+
+.dialog-actions .btn {
+  width: 100%;
+}
