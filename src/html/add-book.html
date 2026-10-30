@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Book — Livraria</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/page-specific.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <a href="index.html" class="brand-logo" aria-label="Livraria Homepage">
+      <img src="../assets/images/livraria-logo.png" alt="Livraria emblem" class="brand-logo-img">
+      <span class="brand-logo-text">Livraria</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Main Navigation">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="catalog.html" class="nav-link active" aria-current="page">My books</a>
+    </nav>
+
+    <div class="header-meta">
+      <img src="../assets/icons/book-open.svg" alt="" aria-hidden="true">
+      <span>Your personal library</span>
+    </div>
+
+    <button class="menu-btn" aria-label="Toggle mobile menu" aria-expanded="false">
+      <img src="../assets/icons/menu.svg" alt="" aria-hidden="true">
+    </button>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" role="navigation" aria-label="Mobile Navigation">
+    <a href="index.html" class="mobile-nav-link">Home</a>
+    <a href="catalog.html" class="mobile-nav-link active">My books</a>
+    <a href="add-book.html" class="mobile-nav-link">Add a book</a>
+  </div>
+
+  <main class="page-container">
+    <!-- Back Link -->
+    <a href="catalog.html" class="btn-back">
+      <img src="../assets/icons/arrow-left.svg" alt="" aria-hidden="true">
+      <span>My books</span>
+    </a>
+
+    <!-- Page Header -->
+    <div class="page-header-block" style="margin-top: var(--space-16);">
+      <div>
+        <h1 class="page-title">Make room for a new story</h1>
+        <p class="page-description">Add a book to your personal library.</p>
+      </div>
+    </div>
+
+    <form id="addBookForm" novalidate>
+      <p style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: var(--space-24);">
+        Fields marked * are required. Everything else can wait.
+      </p>
+
+      <div class="form-layout">
+        <!-- Form Fields Left Column -->
+        <div class="form-fields-column">
+          <!-- Essential Details -->
+          <fieldset class="form-section" style="border: none;">
+            <legend class="form-section-title">Book information</legend>
+            
+            <div class="form-group" id="titleGroup">
+              <label for="bookTitle" class="field-label">
+                Title <span class="required-star">*</span>
+              </label>
+              <input type="text" id="bookTitle" class="input-control" placeholder="e.g. The Secret Garden" required>
+              <span class="field-error-message" id="titleError">Enter a title to add this book.</span>
+            </div>
+
+            <div class="form-group" id="authorGroup">
+              <label for="bookAuthor" class="field-label">
+                Author <span class="required-star">*</span>
+              </label>
+              <input type="text" id="bookAuthor" class="input-control" placeholder="e.g. Frances Hodgson Burnett" required>
+              <span class="field-guidance">Use the author’s full name.</span>
+              <span class="field-error-message" id="authorError">Enter an author to add this book.</span>
+            </div>
+          </fieldset>
+
+          <!-- Edition Details -->
+          <fieldset class="form-section" style="border: none;">
+            <legend class="form-section-title">This edition</legend>
+
+            <div class="form-group" id="isbnGroup">
+              <label for="bookIsbn" class="field-label">
+                ISBN <span class="optional-tag">(optional)</span>
+              </label>
+              <input type="text" id="bookIsbn" class="input-control" placeholder="e.g. 9780141321066">
+              <span class="field-guidance">Enter a 10- or 13-digit ISBN, with or without hyphens.</span>
+              <span class="field-error-message" id="isbnError">Use a valid 10- or 13-digit ISBN.</span>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="bookPublisher" class="field-label">
+                  Publisher <span class="optional-tag">(optional)</span>
+                </label>
+                <input type="text" id="bookPublisher" class="input-control" placeholder="e.g. Puffin Books">
+              </div>
+
+              <div class="form-group" style="max-width: 200px;">
+                <label for="bookYear" class="field-label">
+                  Publication year <span class="optional-tag">(optional)</span>
+                </label>
+                <input type="number" id="bookYear" class="input-control" placeholder="e.g. 2008" min="1000" max="2099">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="bookDescription" class="field-label">
+                Description <span class="optional-tag">(optional)</span>
+              </label>
+              <textarea id="bookDescription" class="input-control" placeholder="What is this book about? Add a short summary or a note to your future self." maxlength="2000"></textarea>
+              <span class="field-guidance" id="descGuidance">Up to 2,000 characters. You can edit this later.</span>
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- Cover Upload Right Column -->
+        <aside class="form-cover-column" aria-label="Book cover upload">
+          <p class="field-label">
+            Book cover <span class="optional-tag">(optional)</span>
+          </p>
+
+          <!-- Dropzone State -->
+          <div class="upload-dropzone" id="uploadDropzone">
+            <input type="file" id="coverFileInput" class="file-input-hidden" accept="image/jpeg,image/png,image/webp">
+            <div class="upload-icon-well">
+              <img src="../assets/icons/image-plus.svg" alt="" aria-hidden="true">
+            </div>
+            <p class="upload-prompt">Drop a cover here, or browse your files</p>
+            <button type="button" class="btn btn-secondary" id="browseFilesBtn">
+              <img src="../assets/icons/upload.svg" alt="" aria-hidden="true">
+              <span>Choose image</span>
+            </button>
+          </div>
+
+          <!-- Uploaded Preview State -->
+          <div class="uploaded-preview-container" id="uploadedPreviewContainer">
+            <div class="upload-dropzone" style="min-height: 290px; cursor: default;">
+              <div class="mini-book-cover" id="previewCover">
+                <div class="spine-rule"></div>
+                <img src="" alt="Book cover preview" class="book-cover-img" id="previewImg">
+              </div>
+              <p class="upload-file-meta" id="previewFileMeta">cover.jpg · 420 KB</p>
+              <button type="button" class="btn btn-secondary" id="replaceCoverBtn">
+                <img src="../assets/icons/upload.svg" alt="" aria-hidden="true">
+                <span>Replace cover</span>
+              </button>
+            </div>
+            <button type="button" class="btn-remove-cover" id="removeCoverBtn">Remove cover</button>
+          </div>
+
+          <!-- Error Alert -->
+          <div class="upload-error-alert" id="uploadErrorAlert" role="alert">
+            This image is too large. Choose a file smaller than 5 MB.
+          </div>
+
+          <p class="field-guidance">
+            JPG, PNG, or WebP. Up to 5 MB. A portrait image works best.
+          </p>
+          <p class="field-guidance" id="noCoverNote">
+            No cover yet? We’ll use a simple book placeholder.
+          </p>
+        </aside>
+      </div>
+
+      <!-- Form Actions Footer -->
+      <footer class="form-actions-footer">
+        <div class="form-actions-row">
+          <a href="catalog.html" class="btn btn-secondary">Cancel</a>
+          <button type="submit" class="btn btn-disabled" id="submitBtn" disabled>
+            <img src="../assets/icons/plus.svg" alt="" aria-hidden="true">
+            <span>Add book</span>
+          </button>
+        </div>
+        <p class="form-actions-guidance" id="submitGuidance">
+          Add a title and an author to save your book.
+        </p>
+      </footer>
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p class="footer-title">Livraria · Your own little library</p>
+    <p class="footer-tagline">A quiet place for your books.</p>
+  </footer>
+
+  <script type="module" src="../js/global.js"></script>
+  <script type="module" src="../js/add-book.js"></script>
+</body>
+</html>
