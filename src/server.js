@@ -1,5 +1,6 @@
 import express, { json } from "express"
 import mysql from "mysql2"
+import path from "node:path"
 
 const pool = mysql.createPool({
     "host": "localhost",
@@ -26,7 +27,7 @@ function validateData(input) {
 }
 
 app.get("/", (req,res) => {
-    res.send("Homepage")
+    res.sendFile(path.join(process.cwd(), "index.html"))
 })
 
 app.get("/books", (req,res) => {
