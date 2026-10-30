@@ -1,0 +1,202 @@
+/* index.css — Styles for Home / Landing Page */
+
+/* Hero Section */
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-48);
+  padding: var(--space-72) var(--space-64);
+  width: 100%;
+}
+
+.hero-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  max-width: 650px;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: 68px;
+  line-height: 1.1;
+  color: var(--color-text-ink);
+  letter-spacing: -0.02em;
+}
+
+.hero-title .highlight {
+  font-weight: 700;
+  color: var(--color-brand-emphasis);
+}
+
+.hero-description {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+}
+
+.hero-note {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.hero-illustration {
+  width: 340px;
+  height: 265px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-illustration img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Benefits Section */
+.benefits-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-32);
+  padding: 0 var(--space-64) var(--space-64);
+  width: 100%;
+}
+
+.benefits-title {
+  font-family: var(--font-display);
+  font-size: 48px;
+  line-height: 1.15;
+  color: var(--color-text-ink);
+}
+
+.benefits-title .highlight {
+  font-weight: 700;
+  color: var(--color-brand-emphasis);
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-24);
+  width: 100%;
+}
+
+.benefit-card {
+  background-color: var(--color-brand-emphasis);
+  border-radius: var(--radius-card);
+  padding: var(--space-24);
+  color: var(--color-surface-white);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.benefit-icon-well {
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.benefit-icon-well img {
+  height: 32px;
+  width: 44px;
+  object-fit: contain;
+}
+
+.benefit-card-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 1.15;
+}
+
+.benefit-card-desc {
+  font-size: 14px;
+  line-height: 1.65;
+  opacity: 0.95;
+}
+
+/* Home CTA Banner */
+.home-cta-section {
+  background-color: var(--color-surface-paper);
+  padding: var(--space-56) var(--space-64);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-24);
+  text-align: center;
+  width: 100%;
+}
+
+.home-cta-title {
+  font-family: var(--font-display);
+  font-size: 48px;
+  line-height: 1.15;
+}
+
+.home-cta-title .highlight {
+  font-weight: 700;
+  color: var(--color-brand-emphasis);
+}
+
+.home-cta-desc {
+  font-size: 16px;
+  color: var(--color-text-secondary);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .hero-section {
+    padding: var(--space-48) var(--space-40);
+  }
+  .hero-title {
+    font-size: 52px;
+  }
+  .benefits-section {
+    padding: 0 var(--space-40) var(--space-48);
+  }
+  .home-cta-section {
+    padding: var(--space-48) var(--space-40);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+    padding: var(--space-40) var(--space-24) var(--space-48);
+    gap: var(--space-32);
+  }
+  .hero-title {
+    font-size: 48px;
+  }
+  .hero-illustration {
+    width: 258px;
+    height: 200px;
+  }
+  .benefits-section {
+    padding: 0 var(--space-24) var(--space-48);
+  }
+  .benefits-title {
+    font-size: 36px;
+  }
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-16);
+  }
+  .home-cta-section {
+    padding: var(--space-40) var(--space-24);
+  }
+  .home-cta-title {
+    font-size: 36px;
+  }
+}
