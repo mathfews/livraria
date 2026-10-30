@@ -667,3 +667,21 @@ textarea.input-control {
 .dialog-actions .btn {
   width: 100%;
 }
+
+/* --- Accessible Focus & State Refinements --- */
+:focus-visible {
+  outline: 2px solid var(--color-primary-action);
+  outline-offset: 2px;
+}
+
+.btn:active {
+  transform: scale(0.99);
+}
+
+.filter-chip:focus-visible,
+.filter-chip-remove:focus-visible,
+.btn-clear-filters:focus-visible {
+  outline: 2px solid var(--color-primary-action);
+  outline-offset: 2px;
+}
+
