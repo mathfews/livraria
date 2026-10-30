@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Details — Livraria</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/page-specific.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <a href="index.html" class="brand-logo" aria-label="Livraria Homepage">
+      <img src="../assets/images/livraria-logo.png" alt="Livraria emblem" class="brand-logo-img">
+      <span class="brand-logo-text">Livraria</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Main Navigation">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="catalog.html" class="nav-link active" aria-current="page">My books</a>
+    </nav>
+
+    <div class="header-meta">
+      <img src="../assets/icons/book-open.svg" alt="" aria-hidden="true">
+      <span>Your personal library</span>
+    </div>
+
+    <button class="menu-btn" aria-label="Toggle mobile menu" aria-expanded="false">
+      <img src="../assets/icons/menu.svg" alt="" aria-hidden="true">
+    </button>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" role="navigation" aria-label="Mobile Navigation">
+    <a href="index.html" class="mobile-nav-link">Home</a>
+    <a href="catalog.html" class="mobile-nav-link active">My books</a>
+    <a href="add-book.html" class="mobile-nav-link">Add a book</a>
+  </div>
+
+  <main class="page-container">
+    <!-- Back Link -->
+    <a href="catalog.html" class="btn-back">
+      <img src="../assets/icons/arrow-left.svg" alt="" aria-hidden="true">
+      <span>My books</span>
+    </a>
+
+    <div id="detailsContent" style="display: none;">
+      <!-- Details Layout -->
+      <div class="details-layout">
+        <!-- Left Column: Cover & Status -->
+        <aside class="details-cover-column" aria-label="Book cover display">
+          <div class="details-cover-well">
+            <div class="details-book-cover" id="detailsBookCover">
+              <div class="spine-rule"></div>
+              <p class="book-cover-title" id="coverTitle"></p>
+              <div class="book-cover-emblem" id="coverEmblemWrap">
+                <img src="" alt="" id="coverEmblemImg" aria-hidden="true">
+              </div>
+              <p class="book-cover-author" id="coverAuthor"></p>
+            </div>
+          </div>
+
+          <div class="library-status-badge">
+            <img src="../assets/icons/book-check.svg" alt="" aria-hidden="true">
+            <span id="addedStatusText">In your library · Added 24 Oct 2026</span>
+          </div>
+        </aside>
+
+        <!-- Right Column: Bibliographic Details & Actions -->
+        <div class="details-content-column">
+          <div class="details-header-block">
+            <span class="overline">FROM YOUR SHELF</span>
+            <h1 class="details-title" id="bookTitleDisplay"></h1>
+            <p class="details-author" id="bookAuthorDisplay"></p>
+          </div>
+
+          <!-- Actions -->
+          <div class="details-actions-row">
+            <a href="#" class="btn btn-primary" id="editBookBtn">
+              <img src="../assets/icons/pencil.svg" alt="" aria-hidden="true">
+              <span>Edit book</span>
+            </a>
+            <button type="button" class="btn btn-secondary" id="openDeleteModalBtn">
+              <img src="../assets/icons/trash-2.svg" alt="" aria-hidden="true">
+              <span>Delete book</span>
+            </button>
+          </div>
+
+          <!-- Bibliographic Information -->
+          <section class="bibliographic-section" aria-labelledby="edition-heading">
+            <h2 id="edition-heading" class="bibliographic-heading">About this edition</h2>
+
+            <div class="bibliographic-row">
+              <span class="bib-label">Title</span>
+              <span class="bib-value" id="bibTitle"></span>
+            </div>
+
+            <div class="bibliographic-row">
+              <span class="bib-label">Author</span>
+              <span class="bib-value" id="bibAuthor"></span>
+            </div>
+
+            <div class="bibliographic-row split-row">
+              <div>
+                <span class="bib-label">Publisher</span>
+                <span class="bib-value" id="bibPublisher">—</span>
+              </div>
+              <div>
+                <span class="bib-label">Publication year</span>
+                <span class="bib-value" id="bibYear">—</span>
+              </div>
+            </div>
+
+            <div class="bibliographic-row" id="bibIsbnRow">
+              <span class="bib-label" id="isbnLabel">ISBN-13</span>
+              <span class="bib-value" id="bibIsbn">—</span>
+            </div>
+          </section>
+
+          <!-- Description Section -->
+          <section class="description-section" id="descriptionSection" aria-labelledby="description-heading">
+            <h2 id="description-heading" class="description-heading">Between the covers</h2>
+            <p class="description-text" id="bibDescription"></p>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <!-- Not Found Fallback -->
+    <div id="notFoundState" class="empty-state-container" style="display: none; padding-top: 80px;">
+      <h1 class="empty-state-title">Book not found</h1>
+      <p class="empty-state-desc">The book you are looking for does not exist or was removed.</p>
+      <a href="catalog.html" class="btn btn-primary">
+        <img src="../assets/icons/arrow-left.svg" alt="" aria-hidden="true">
+        <span>Back to my books</span>
+      </a>
+    </div>
+  </main>
+
+  <!-- Delete Confirmation Modal Dialog -->
+  <div class="modal-backdrop" id="deleteModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="dialogTitle" aria-describedby="dialogDesc">
+    <div class="modal-dialog">
+      <div class="dialog-header">
+        <div class="destructive-symbol" aria-hidden="true">
+          <img src="../assets/icons/trash-2.svg" alt="">
+        </div>
+        <button type="button" class="dialog-close-btn" id="closeModalBtn" aria-label="Close dialog">
+          <img src="../assets/icons/x.svg" alt="" aria-hidden="true">
+        </button>
+      </div>
+
+      <div class="dialog-body">
+        <h2 id="dialogTitle" class="dialog-title">Delete this book?</h2>
+        <p id="dialogDesc" class="dialog-desc">
+          This book and its saved details will be permanently removed from your library. This can’t be undone.
+        </p>
+      </div>
+
+      <div class="dialog-book-preview">
+        <div class="dialog-mini-cover" id="dialogMiniCover">
+          <div class="spine-rule"></div>
+          <p class="book-cover-title" id="dialogCoverTitle"></p>
+          <div class="book-cover-emblem" id="dialogCoverEmblemWrap">
+            <img src="" alt="" id="dialogCoverEmblemImg" aria-hidden="true">
+          </div>
+          <p class="book-cover-author" id="dialogCoverAuthor"></p>
+        </div>
+        <div class="dialog-book-summary">
+          <p class="dialog-book-title" id="dialogBookTitle"></p>
+          <p class="dialog-book-author" id="dialogBookAuthor"></p>
+        </div>
+      </div>
+
+      <div class="dialog-actions">
+        <button type="button" class="btn btn-destructive" id="confirmDeleteBtn">Delete book</button>
+        <button type="button" class="btn btn-secondary" id="cancelDeleteBtn">Cancel, keep book</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p class="footer-title">Livraria · Your own little library</p>
+    <p class="footer-tagline">A quiet place for your books.</p>
+  </footer>
+
+  <script type="module" src="../js/global.js"></script>
+  <script type="module" src="../js/book-details.js"></script>
+</body>
+</html>
