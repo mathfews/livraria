@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Books — Livraria</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/page-specific.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <a href="index.html" class="brand-logo" aria-label="Livraria Homepage">
+      <img src="../assets/images/livraria-logo.png" alt="Livraria emblem" class="brand-logo-img">
+      <span class="brand-logo-text">Livraria</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Main Navigation">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="catalog.html" class="nav-link active" aria-current="page">My books</a>
+    </nav>
+
+    <div class="header-meta">
+      <img src="../assets/icons/book-open.svg" alt="" aria-hidden="true">
+      <span>Your personal library</span>
+    </div>
+
+    <button class="menu-btn" aria-label="Toggle mobile menu" aria-expanded="false">
+      <img src="../assets/icons/menu.svg" alt="" aria-hidden="true">
+    </button>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" role="navigation" aria-label="Mobile Navigation">
+    <a href="index.html" class="mobile-nav-link">Home</a>
+    <a href="catalog.html" class="mobile-nav-link active">My books</a>
+    <a href="add-book.html" class="mobile-nav-link">Add a book</a>
+  </div>
+
+  <main class="page-container">
+    <!-- Page Header Block -->
+    <div class="page-header-block">
+      <div>
+        <h1 class="page-title">Your own little library</h1>
+        <p class="page-description">A home for the books you keep coming back to.</p>
+      </div>
+      <a href="add-book.html" class="btn btn-primary" id="addBookBtn">
+        <img src="../assets/icons/plus.svg" alt="" aria-hidden="true">
+        <span>Add book</span>
+      </a>
+    </div>
+
+    <!-- Search & Filter Toolbar -->
+    <section class="catalog-toolbar" aria-label="Catalog search and filters">
+      <div class="search-field-container" id="searchContainer">
+        <img src="../assets/icons/search.svg" alt="" class="search-icon" aria-hidden="true">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search by title, author, or ISBN" autocomplete="off" spellcheck="false">
+        <button type="button" id="searchClearBtn" class="search-clear-btn" aria-label="Clear search">
+          <img src="../assets/icons/x.svg" alt="" aria-hidden="true">
+        </button>
+        <span class="search-shortcut-badge" aria-hidden="true">⌘ K</span>
+      </div>
+
+      <div class="filter-row">
+        <div class="select-control-wrapper">
+          <select id="authorFilter" class="select-control" aria-label="Filter by author">
+            <option value="">All authors</option>
+          </select>
+          <img src="../assets/icons/chevron-down.svg" alt="" class="select-chevron" aria-hidden="true">
+        </div>
+
+        <div class="select-control-wrapper">
+          <select id="yearFilter" class="select-control" aria-label="Filter by publication year">
+            <option value="">All years</option>
+          </select>
+          <img src="../assets/icons/chevron-down.svg" alt="" class="select-chevron" aria-hidden="true">
+        </div>
+
+        <div class="select-control-wrapper">
+          <select id="sortFilter" class="select-control" aria-label="Sort books">
+            <option value="title-asc">Sort: Title: A–Z</option>
+            <option value="title-desc">Sort: Title: Z–A</option>
+            <option value="year-desc">Sort: Year: Newest</option>
+            <option value="year-asc">Sort: Year: Oldest</option>
+          </select>
+          <img src="../assets/icons/chevron-down.svg" alt="" class="select-chevron" aria-hidden="true">
+        </div>
+      </div>
+
+      <!-- Applied Filter Chips -->
+      <div id="appliedFiltersRow" class="applied-filters-row" aria-live="polite">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <!-- Catalog Summary Bar -->
+    <div id="catalogSummaryBar" class="catalog-summary-bar">
+      <p id="catalogCountText">8 books in your library</p>
+      <div id="catalogSummaryRight">
+        <div class="catalog-grid-icon" title="Grid view">
+          <img src="../assets/icons/layout-grid.svg" alt="" aria-hidden="true">
+        </div>
+      </div>
+    </div>
+
+    <!-- Catalog Content (Grid or Empty States) -->
+    <div id="catalogContent">
+      <div id="booksGrid" class="books-grid" role="region" aria-label="Books list">
+        <!-- Books injected via catalog.js -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p class="footer-title">Livraria · Your own little library</p>
+    <p class="footer-tagline">A quiet place for your books.</p>
+  </footer>
+
+  <script type="module" src="../js/global.js"></script>
+  <script type="module" src="../js/catalog.js"></script>
+</body>
+</html>
