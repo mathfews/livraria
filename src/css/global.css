@@ -113,19 +113,19 @@ input:focus, select:focus, textarea:focus, button:focus-visible {
   display: flex;
   align-items: center;
   gap: var(--space-8);
-  height: 32px;
+  height: 30px;
 }
 
 .brand-logo-img {
-  width: 36px;
-  height: 31px;
+  width: 33px;
+  height: 30px;
   object-fit: contain;
 }
 
 .brand-logo-text {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 25px;
+  font-size: 20px;
   color: var(--color-brand-emphasis);
   letter-spacing: -0.02em;
 }
