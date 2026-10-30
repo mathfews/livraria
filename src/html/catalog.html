@@ -39,7 +39,6 @@
   </div>
 
   <main class="page-container">
-    <!-- Page Header Block -->
     <div class="page-header-block">
       <div>
         <h1 class="page-title">Your own little library</h1>
@@ -51,65 +50,28 @@
       </a>
     </div>
 
-    <!-- Search & Filter Toolbar -->
-    <section class="catalog-toolbar" aria-label="Catalog search and filters">
-      <div class="search-field-container" id="searchContainer">
-        <img src="../assets/icons/search.svg" alt="" class="search-icon" aria-hidden="true">
-        <input type="text" id="searchInput" class="search-input" placeholder="Search by title, author, or ISBN" autocomplete="off" spellcheck="false">
-        <button type="button" id="searchClearBtn" class="search-clear-btn" aria-label="Clear search">
-          <img src="../assets/icons/x.svg" alt="" aria-hidden="true">
-        </button>
-        <span class="search-shortcut-badge" aria-hidden="true">⌘ K</span>
-      </div>
+    <p class="catalog-empty-state">Books loaded from Express will appear here.</p>
+    <div id="booksGrid" class="books-grid" role="region" aria-label="Books list"></div>
 
-      <div class="filter-row">
-        <div class="select-control-wrapper">
-          <select id="authorFilter" class="select-control" aria-label="Filter by author">
-            <option value="">All authors</option>
-          </select>
-          <img src="../assets/icons/chevron-down.svg" alt="" class="select-chevron" aria-hidden="true">
+    <template id="bookCardTemplate">
+      <article class="book-card">
+        <div class="cover-well">
+          <div class="book-cover">
+            <div class="spine-rule"></div>
+            <p class="book-cover-title" data-book-title></p>
+            <div class="book-cover-emblem">
+              <img src="../assets/icons/book-open.svg" alt="" aria-hidden="true">
+            </div>
+            <p class="book-cover-author" data-book-author></p>
+          </div>
         </div>
-
-        <div class="select-control-wrapper">
-          <select id="yearFilter" class="select-control" aria-label="Filter by publication year">
-            <option value="">All years</option>
-          </select>
-          <img src="../assets/icons/chevron-down.svg" alt="" class="select-chevron" aria-hidden="true">
+        <div class="book-info">
+          <h2 class="book-title" data-book-title></h2>
+          <p class="book-author" data-book-author></p>
+          <p class="book-year" data-book-year></p>
         </div>
-
-        <div class="select-control-wrapper">
-          <select id="sortFilter" class="select-control" aria-label="Sort books">
-            <option value="title-asc">Sort: Title: A–Z</option>
-            <option value="title-desc">Sort: Title: Z–A</option>
-            <option value="year-desc">Sort: Year: Newest</option>
-            <option value="year-asc">Sort: Year: Oldest</option>
-          </select>
-          <img src="../assets/icons/chevron-down.svg" alt="" class="select-chevron" aria-hidden="true">
-        </div>
-      </div>
-
-      <!-- Applied Filter Chips -->
-      <div id="appliedFiltersRow" class="applied-filters-row" aria-live="polite">
-        <!-- Rendered dynamically -->
-      </div>
-    </section>
-
-    <!-- Catalog Summary Bar -->
-    <div id="catalogSummaryBar" class="catalog-summary-bar">
-      <p id="catalogCountText">8 books in your library</p>
-      <div id="catalogSummaryRight">
-        <div class="catalog-grid-icon" title="Grid view">
-          <img src="../assets/icons/layout-grid.svg" alt="" aria-hidden="true">
-        </div>
-      </div>
-    </div>
-
-    <!-- Catalog Content (Grid or Empty States) -->
-    <div id="catalogContent">
-      <div id="booksGrid" class="books-grid" role="region" aria-label="Books list">
-        <!-- Books injected via catalog.js -->
-      </div>
-    </div>
+      </article>
+    </template>
   </main>
 
   <!-- Footer -->
@@ -118,7 +80,6 @@
     <p class="footer-tagline">A quiet place for your books.</p>
   </footer>
 
-  <script type="module" src="../js/global.js"></script>
-  <script type="module" src="../js/catalog.js"></script>
+  <script src="../js/global.js"></script>
 </body>
 </html>

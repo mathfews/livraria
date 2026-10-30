@@ -1,39 +1,4 @@
-/* catalog.css — Styles for Book Catalog & Search Results */
-
-.catalog-toolbar {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-16);
-  width: 100%;
-  margin-bottom: var(--space-32);
-}
-
-.catalog-summary-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  font-weight: 600;
-  font-size: 14px;
-  color: var(--color-text-ink);
-  margin-bottom: var(--space-24);
-}
-
-.catalog-grid-icon img {
-  width: 18px;
-  height: 18px;
-}
-
-.catalog-results-sublink {
-  color: var(--color-primary-action);
-  font-weight: 600;
-  font-size: 13px;
-  cursor: pointer;
-}
-
-.catalog-results-sublink:hover {
-  text-decoration: underline;
-}
+/* catalog.css — Styles for the book catalog template */
 
 .books-grid {
   display: grid;
@@ -42,89 +7,10 @@
   width: 100%;
 }
 
-/* Empty State / No Results */
-.empty-state-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: var(--space-56) 0;
-  gap: var(--space-24);
-  width: 100%;
-}
-
-.empty-state-icon-well {
-  background-color: var(--color-surface-warm);
-  width: 96px;
-  height: 96px;
-  border-radius: var(--radius-pill);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.empty-state-icon-well img {
-  width: 40px;
-  height: 40px;
-}
-
-.empty-state-illustration {
-  width: 140px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.empty-state-illustration img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.empty-state-message {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-12);
-  max-width: 480px;
-}
-
-.empty-state-title {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 1.15;
-  color: var(--color-text-ink);
-}
-
-.empty-state-desc {
-  font-size: 15px;
-  line-height: 1.6;
+.catalog-empty-state {
+  margin: var(--space-24) 0;
   color: var(--color-text-secondary);
-}
-
-.start-simple-tip {
-  background-color: var(--color-surface-paper);
-  border-radius: var(--radius-card);
-  padding: var(--space-24);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-8);
-  width: 100%;
-  margin-top: var(--space-32);
-}
-
-.start-simple-tip-title {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 22px;
-  color: var(--color-brand-emphasis);
-}
-
-.start-simple-tip-desc {
   font-size: 14px;
-  color: var(--color-text-secondary);
-  line-height: 1.6;
 }
 
 /* Responsive Breakpoints */
@@ -144,31 +30,25 @@
 
 @media (max-width: 480px) {
   .cover-well {
-    height: 220px;
+    height: 240px;
     padding: var(--space-8);
   }
   .book-cover {
-    width: 124px;
-    height: 180px;
+    width: 138px;
+    height: 200px;
     padding: var(--space-12);
   }
   .book-cover-title {
     font-size: 15px;
   }
   .book-cover-emblem {
-    width: 38px;
-    height: 38px;
+    width: 48px;
+    height: 48px;
   }
   .book-cover-author {
     font-size: 10px;
   }
   .book-title {
     font-size: 18px;
-  }
-  .filter-row {
-    flex-direction: column;
-  }
-  .select-control-wrapper {
-    width: 100%;
   }
 }
