@@ -18,7 +18,7 @@
 
 .cover-well {
   background-color: var(--color-surface-paper);
-  height: 284px;
+  height: 312px;
   border-radius: var(--radius-card);
   display: flex;
   align-items: center;
@@ -29,8 +29,8 @@
 }
 
 .book-cover {
-  width: 164px;
-  height: 236px;
+  width: 184px;
+  height: 264px;
   border-radius: var(--radius-book-cover);
   padding: 20px;
   box-shadow: var(--shadow-book-cover);
@@ -65,8 +65,8 @@
 }
 
 .book-cover-emblem {
-  width: 62px;
-  height: 62px;
+  width: 76px;
+  height: 76px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -108,8 +108,8 @@
 }
 
 .cover-placeholder img {
-  width: 64px;
-  height: 64px;
+  width: 80px;
+  height: 80px;
 }
 
 .cover-placeholder-text {
@@ -165,8 +165,8 @@
 }
 
 .search-icon {
-  width: 20px;
-  height: 20px;
+  width: 26px;
+  height: 26px;
   flex-shrink: 0;
 }
 
@@ -198,8 +198,8 @@
 }
 
 .search-clear-btn img {
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
 }
 
 .search-shortcut-badge {
@@ -247,8 +247,8 @@
   right: 12px;
   top: 50%;
   transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
+  width: 22px;
+  height: 22px;
   pointer-events: none;
 }
 
@@ -288,8 +288,8 @@
 }
 
 .filter-chip-remove img {
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
 }
 
 .btn-clear-filters {
@@ -403,8 +403,8 @@ textarea.input-control {
 
 .upload-icon-well {
   background-color: var(--color-surface-warm);
-  width: 56px;
-  height: 56px;
+  width: 72px;
+  height: 72px;
   border-radius: var(--radius-pill);
   display: flex;
   align-items: center;
@@ -412,8 +412,8 @@ textarea.input-control {
 }
 
 .upload-icon-well img {
-  width: 26px;
-  height: 26px;
+  width: 36px;
+  height: 36px;
 }
 
 .upload-prompt {
@@ -684,4 +684,3 @@ textarea.input-control {
   outline: 2px solid var(--color-primary-action);
   outline-offset: 2px;
 }
-

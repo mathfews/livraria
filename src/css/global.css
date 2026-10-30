@@ -164,8 +164,8 @@ input:focus, select:focus, textarea:focus, button:focus-visible {
 }
 
 .header-meta img {
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
 }
 
 .menu-btn {
@@ -178,8 +178,8 @@ input:focus, select:focus, textarea:focus, button:focus-visible {
 }
 
 .menu-btn img {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
 }
 
 /* Mobile Nav Drawer */
@@ -259,8 +259,8 @@ input:focus, select:focus, textarea:focus, button:focus-visible {
 }
 
 .btn img {
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
 }
 
 .btn-primary {
@@ -312,8 +312,8 @@ input:focus, select:focus, textarea:focus, button:focus-visible {
 }
 
 .btn-back img {
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
 }
 
 /* Layout Utilities */

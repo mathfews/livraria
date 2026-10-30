@@ -49,8 +49,8 @@
 }
 
 .hero-illustration {
-  width: 340px;
-  height: 265px;
+  width: 420px;
+  height: 327px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -102,14 +102,14 @@
 }
 
 .benefit-icon-well {
-  height: 48px;
+  height: 60px;
   display: flex;
   align-items: center;
 }
 
 .benefit-icon-well img {
-  height: 32px;
-  width: 44px;
+  height: 48px;
+  width: 60px;
   object-fit: contain;
 }
 
@@ -180,8 +180,8 @@
     font-size: 48px;
   }
   .hero-illustration {
-    width: 258px;
-    height: 200px;
+    width: 320px;
+    height: 249px;
   }
   .benefits-section {
     padding: 0 var(--space-24) var(--space-48);
