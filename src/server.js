@@ -26,10 +26,11 @@ function validateData(input) {
     return true
 }
 
-app.get("/", (req,res) => {
-    res.sendFile(path.join(process.cwd(), "index.html"))
-})
+app.use(express.static(process.cwd()))
 
+app.get("/", (req,res) => {
+    res.sendFile(path.join(process.cwd(), "html", "index.html"))
+})
 app.get("/books", (req,res) => {
     pool.query("select * from books").then(result => {
         res.json(result[0])
