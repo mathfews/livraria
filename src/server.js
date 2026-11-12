@@ -31,6 +31,15 @@ app.use(express.static(process.cwd()))
 app.get("/", (req,res) => {
     res.sendFile(path.join(process.cwd(), "html", "index.html"))
 })
+
+app.get("/catalog", (req,res) => {
+    res.sendFile(path.join(process.cwd(), "html", "catalog.html"))
+})
+
+app.get("/add", (req,res) => {
+    res.sendFile(path.join(process.cwd(), "html", "add-book.html"))
+})
+
 app.get("/books", (req,res) => {
     pool.query("select * from books").then(result => {
         res.json(result[0])
@@ -161,6 +170,10 @@ app.put("/books/:id", async (req, res) => { // replaces an entire resource
         }
         return res.status(204).end()
     })
+})
+
+app.use((req,res, next) => {
+    res.status(404).sendFile(path.join(process.cwd(), "html", "404.html"))
 })
 
 app.listen(port, () => {
