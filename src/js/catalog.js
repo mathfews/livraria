@@ -10,23 +10,18 @@ async function getBooks() {
 function createBookCard(book) {
     const card = bookCardTemplate.content.cloneNode(true)
     const bookCover = card.querySelector(".book-cover")
-    const coverEmblem = card.querySelector(".book-cover-emblem img")
     const year = card.querySelector("[data-book-year]")
 
-    card.querySelectorAll("[data-book-title]").forEach(element => {
-        element.textContent = book.title
-    })
+    card.querySelectorAll("[data-book-title]")[1].textContent = book.title
 
-    card.querySelectorAll("[data-book-author]").forEach(element => {
-        element.textContent = book.author
-    })
+    card.querySelectorAll("[data-book-author]")[1].textContent = book.author
 
     const publicationYear = book.year ?? book.publication_year
     year.textContent = publicationYear ?? ""
     year.hidden = !publicationYear
 
-    bookCover.style.backgroundColor = "#815744"
-    coverEmblem.src = "../assets/icons/feather.svg"
+    bookCover.style.backgroundImage = `url(${book.cover_url})`
+    bookCover.style.backgroundSize = "cover"
 
     return card
 }
