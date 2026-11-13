@@ -11,6 +11,7 @@ const submitButton = document.getElementById("submitBtn")
 const previewTitle = document.getElementById("previewTitle")
 const previewAuthor = document.getElementById("previewAuthor")
 const previewImage = document.getElementById("previewImg")
+const submitBookButton = document.getElementById("submitBtn")
 
 const inputs = [titleInput, authorInput, coverUrlInput, isbnInput, publisherInput, dateInput, descriptionInput]
 
@@ -59,14 +60,27 @@ function updateSubmitButton() {
   submitButton.classList.toggle("btn-primary", canSubmit)
 }
 
+async function addBook() {
+  const data = getBookData()
+  const response = await fetch("/books", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+}
+
+submitBookButton.addEventListener("click", addBook)
+
 function getBookData() {
   return {
     title: titleInput.value.trim(),
     author: authorInput.value.trim(),
-    coverUrl: coverUrlInput.value.trim(),
-    isbn: isbnInput.value.trim(),
     publisher: publisherInput.value.trim(),
-    date: dateInput.value.trim(),
+    publication_year: dateInput.value.trim(),
+    cover_url: coverUrlInput.value.trim(),
+    isbn: isbnInput.value.trim(),
     description: descriptionInput.value.trim()
   }
 }
