@@ -6,6 +6,18 @@
   width: 100%;
 }
 
+#submitBtn.btn-disabled {
+  img {
+    filter: invert(1) brightness(0.8) contrast(1.2) opacity(0.4);
+  }
+}
+
+#submitBtn.btn-primary {
+  img {
+    filter: invert(0) brightness(0.8) contrast(1.2);
+  }
+}
+
 .form-fields-column {
   flex: 1;
   display: flex;

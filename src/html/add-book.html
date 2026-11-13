@@ -54,10 +54,6 @@
     </div>
 
     <section class="book-form-template" aria-label="Book form template">
-      <p class="field-guidance">Form template only. Express and MySQL integration will be added later.</p>
-      <p style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: var(--space-24);">
-        Fields marked * are required. Everything else can wait.
-      </p>
 
       <div class="form-layout">
         <!-- Form Fields Left Column -->
@@ -68,7 +64,7 @@
             
             <div class="form-group" id="titleGroup">
               <label for="bookTitle" class="field-label">
-                Title <span class="required-star">*</span>
+                Title
               </label>
               <input type="text" id="bookTitle" class="input-control" placeholder="e.g. The Secret Garden" required>
               <span class="field-error-message" id="titleError">Enter a title to add this book.</span>
@@ -76,7 +72,7 @@
 
             <div class="form-group" id="authorGroup">
               <label for="bookAuthor" class="field-label">
-                Author <span class="required-star">*</span>
+                Author
               </label>
               <input type="text" id="bookAuthor" class="input-control" placeholder="e.g. Frances Hodgson Burnett" required>
               <span class="field-guidance">Use the author’s full name.</span>
@@ -85,7 +81,7 @@
 
             <div class="form-group">
               <label for="coverUrl" class="field-label">
-                Cover URL <span class="optional-tag">(optional)</span>
+                Cover URL <span class="optional-tag"></span>
               </label>
               <input type="url" id="coverUrl" class="input-control" placeholder="https://example.com/book-cover.jpg">
               <span class="field-guidance">Add an image URL to preview the cover.</span>
@@ -98,7 +94,7 @@
 
             <div class="form-group" id="isbnGroup">
               <label for="bookIsbn" class="field-label">
-                ISBN <span class="optional-tag">(optional)</span>
+                ISBN <span class="optional-tag"></span>
               </label>
               <input type="text" id="bookIsbn" class="input-control" placeholder="e.g. 9780141321066">
               <span class="field-guidance">Enter a 10- or 13-digit ISBN, with or without hyphens.</span>
@@ -108,14 +104,14 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="bookPublisher" class="field-label">
-                  Publisher <span class="optional-tag">(optional)</span>
+                  Publisher <span class="optional-tag"></span>
                 </label>
                 <input type="text" id="bookPublisher" class="input-control" placeholder="e.g. Puffin Books">
               </div>
 
               <div class="form-group" style="max-width: 200px;">
                 <label for="bookYear" class="field-label">
-                  Publication year <span class="optional-tag">(optional)</span>
+                  Publication year <span class="optional-tag"></span>
                 </label>
                 <input type="number" id="bookYear" class="input-control" placeholder="e.g. 2008" min="1000" max="2099">
               </div>
@@ -123,7 +119,7 @@
 
             <div class="form-group">
               <label for="bookDescription" class="field-label">
-                Description <span class="optional-tag">(optional)</span>
+                Description <span class="optional-tag"></span>
               </label>
               <textarea id="bookDescription" class="input-control" placeholder="What is this book about? Add a short summary or a note to your future self." maxlength="2000"></textarea>
               <span class="field-guidance" id="descGuidance">Up to 2,000 characters. You can edit this later.</span>
@@ -150,15 +146,12 @@
       <!-- Form Actions Footer -->
       <footer class="form-actions-footer">
         <div class="form-actions-row">
-          <a href="catalog.html" class="btn btn-secondary">Cancel</a>
+          <a href="catalog" class="btn btn-secondary">Cancel</a>
           <button type="button" class="btn btn-disabled" id="submitBtn" disabled>
             <img src="../assets/icons/plus.svg" alt="" aria-hidden="true">
             <span>Add book</span>
           </button>
         </div>
-        <p class="form-actions-guidance" id="submitGuidance">
-          Add a title and an author to save your book.
-        </p>
       </footer>
     </section>
   </main>
