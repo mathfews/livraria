@@ -2,11 +2,31 @@ import "./global.js"
 
 const titleInput = document.getElementById("bookTitle")
 const authorInput = document.getElementById("bookAuthor")
+const isbnInput = document.getElementById("bookIsbn")
+const publisherInput = document.getElementById("bookPublisher")
+const dateInput = document.getElementById("bookYear")
+const descriptionInput = document.getElementById("bookDescription")
 const coverUrlInput = document.getElementById("coverUrl")
 const submitButton = document.getElementById("submitBtn")
 const previewTitle = document.getElementById("previewTitle")
 const previewAuthor = document.getElementById("previewAuthor")
 const previewImage = document.getElementById("previewImg")
+
+const inputs = [titleInput, authorInput, coverUrlInput, isbnInput, publisherInput, dateInput, descriptionInput]
+
+const preview_inputs = [titleInput, authorInput, coverUrlInput]
+
+preview_inputs.forEach(input => {
+  input.addEventListener("input", () => {
+    updatePreview()
+  })
+})
+
+inputs.forEach(input => {
+  input.addEventListener("input", () => {
+    updateSubmitButton()
+  })
+})
 
 function updatePreview() {
   previewTitle.textContent = titleInput.value.trim()
@@ -29,20 +49,28 @@ function updatePreview() {
 }
 
 function updateSubmitButton() {
-  const canSubmit = Boolean(titleInput.value.trim() && authorInput.value.trim())
+  const canSubmit = inputs.every(input => input.value.trim() !== "")
+
+  console.log(canSubmit)
+
   submitButton.disabled = !canSubmit
+
   submitButton.classList.toggle("btn-disabled", !canSubmit)
   submitButton.classList.toggle("btn-primary", canSubmit)
 }
 
-titleInput.addEventListener("input", () => {
-  updatePreview()
-  updateSubmitButton()
-})
-authorInput.addEventListener("input", () => {
-  updatePreview()
-  updateSubmitButton()
-})
+function getBookData() {
+  return {
+    title: titleInput.value.trim(),
+    author: authorInput.value.trim(),
+    coverUrl: coverUrlInput.value.trim(),
+    isbn: isbnInput.value.trim(),
+    publisher: publisherInput.value.trim(),
+    date: dateInput.value.trim(),
+    description: descriptionInput.value.trim()
+  }
+}
+
 coverUrlInput.addEventListener("input", updatePreview)
 previewImage.addEventListener("error", () => {
   previewImage.hidden = true
