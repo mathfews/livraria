@@ -54,17 +54,31 @@ app.get("/books/:id", (req,res) => {
 })
 
 app.post("/books", async (req, res) => {
-    const {title, author} = req.body
+    const body = req.body
 
-    if (!(validateData(title) && validateData(author))) {
+    Object.entries(body).forEach(([key, value]) => {
+        if (!validateData(value)) {
+            return res.status(400).end()
+        }
+    })
+
+    const allowedColumns = await pool.query("describe books")
+    const allowedColumnsNames = allowedColumns[0].map((column) => column.Field)
+    allowedColumnsNames.splice(allowedColumnsNames.indexOf("id"), 1)
+
+    console.log("Allowed columns:", allowedColumnsNames)
+
+    const bodyKeys = Object.keys(body)
+
+    console.log("Body keys:", bodyKeys)
+
+    const hasAllColumns = bodyKeys.every((key) => allowedColumnsNames.includes(key))
+
+    if (!hasAllColumns) {
         return res.status(400).end()
     }
 
-    const formattedTitle = title.trim()
-
-    const formattedAuthor = author.trim()
-
-    await pool.query("insert into books (title, author) values (? , ?)", [formattedTitle, formattedAuthor]).then(result => {
+    await pool.query(`insert into books (${allowedColumnsNames.join(", ")}) values (${allowedColumnsNames.map(() => "?").join(", ")})`, allowedColumnsNames.map((name) => body[name].trim())).then( () => {
         res.status(201).end()
     })
 })
