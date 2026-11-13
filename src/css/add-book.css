@@ -21,6 +21,16 @@
   gap: var(--space-16);
 }
 
+.book-cover-preview {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.book-cover-preview .book-cover {
+  flex-shrink: 0;
+}
+
 .form-section {
   display: flex;
   flex-direction: column;

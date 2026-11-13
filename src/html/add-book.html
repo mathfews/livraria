@@ -82,6 +82,14 @@
               <span class="field-guidance">Use the author’s full name.</span>
               <span class="field-error-message" id="authorError">Enter an author to add this book.</span>
             </div>
+
+            <div class="form-group">
+              <label for="coverUrl" class="field-label">
+                Cover URL <span class="optional-tag">(optional)</span>
+              </label>
+              <input type="url" id="coverUrl" class="input-control" placeholder="https://example.com/book-cover.jpg">
+              <span class="field-guidance">Add an image URL to preview the cover.</span>
+            </div>
           </fieldset>
 
           <!-- Edition Details -->
@@ -123,52 +131,19 @@
           </fieldset>
         </div>
 
-        <!-- Cover Upload Right Column -->
-        <aside class="form-cover-column" aria-label="Book cover upload">
-          <p class="field-label">
-            Book cover <span class="optional-tag">(optional)</span>
-          </p>
-
-          <!-- Dropzone State -->
-          <div class="upload-dropzone" id="uploadDropzone">
-            <input type="file" id="coverFileInput" class="file-input-hidden" accept="image/jpeg,image/png,image/webp">
-            <div class="upload-icon-well">
-              <img src="../assets/icons/image-plus.svg" alt="" aria-hidden="true">
+        <!-- Book Cover Preview -->
+        <aside class="form-cover-column" aria-label="Book cover preview">
+          <p class="field-label">Preview</p>
+          <div class="book-cover-preview">
+            <div class="book-cover" id="previewCover">
+              <div class="spine-rule"></div>
+              <img src="" alt="" class="book-cover-img" id="previewImg" hidden>
             </div>
-            <p class="upload-prompt">Drop a cover here, or browse your files</p>
-            <button type="button" class="btn btn-secondary" id="browseFilesBtn">
-              <img src="../assets/icons/upload.svg" alt="" aria-hidden="true">
-              <span>Choose image</span>
-            </button>
           </div>
-
-          <!-- Uploaded Preview State -->
-          <div class="uploaded-preview-container" id="uploadedPreviewContainer">
-            <div class="upload-dropzone" style="min-height: 290px; cursor: default;">
-              <div class="mini-book-cover" id="previewCover">
-                <div class="spine-rule"></div>
-                <img src="" alt="Book cover preview" class="book-cover-img" id="previewImg">
-              </div>
-              <p class="upload-file-meta" id="previewFileMeta">cover.jpg · 420 KB</p>
-              <button type="button" class="btn btn-secondary" id="replaceCoverBtn">
-                <img src="../assets/icons/upload.svg" alt="" aria-hidden="true">
-                <span>Replace cover</span>
-              </button>
-            </div>
-            <button type="button" class="btn-remove-cover" id="removeCoverBtn">Remove cover</button>
+          <div class="book-info">
+            <h2 class="book-title" id="previewTitle"></h2>
+            <p class="book-author" id="previewAuthor"></p>
           </div>
-
-          <!-- Error Alert -->
-          <div class="upload-error-alert" id="uploadErrorAlert" role="alert">
-            This image is too large. Choose a file smaller than 5 MB.
-          </div>
-
-          <p class="field-guidance">
-            JPG, PNG, or WebP. Up to 5 MB. A portrait image works best.
-          </p>
-          <p class="field-guidance" id="noCoverNote">
-            Cover handling can be connected to the API later.
-          </p>
         </aside>
       </div>
 
@@ -194,6 +169,6 @@
     <p class="footer-tagline">A quiet place for your books.</p>
   </footer>
 
-  <script type="module" src="../js/global.js"></script>
+  <script type="module" src="../js/add-book.js"></script>
 </body>
 </html>
