@@ -10,6 +10,11 @@
   width: 100%;
 }
 
+#backArrow {
+  transform: invert(1);
+  margin-right: var(--space-8);
+}
+
 .error-code {
   font-family: var(--font-display);
   font-weight: 700;
