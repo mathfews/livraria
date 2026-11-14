@@ -16,9 +16,13 @@ function createBookCard(book) {
 
     card.querySelectorAll("[data-book-author]")[1].textContent = book.author
 
+    /*
+
     const publicationYear = book.year ?? book.publication_year
     year.textContent = publicationYear ?? ""
     year.hidden = !publicationYear
+
+    */
 
     bookCover.style.backgroundImage = `url(${book.cover_url})`
     bookCover.style.backgroundSize = "cover"
