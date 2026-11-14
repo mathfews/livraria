@@ -8,7 +8,7 @@ async function getBooks() {
 }
 
 function createBookCard(book) {
-    const card = bookCardTemplate.content.cloneNode(true)
+    const card = bookCardTemplate.content.firstElementChild.cloneNode(true)
 
     card.addEventListener("click", () => {
         window.location.href = `/catalog/${book.id}`
