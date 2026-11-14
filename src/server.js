@@ -52,6 +52,12 @@ app.get("/books", (req,res) => {
     })
 })
 
+app.get("/catalog/:id", async (req,res) => {
+    const id = Number(req.params.id)
+    const book = await getBookById(id)
+    res.send(book)    
+})
+
 app.get("/books/:id", (req,res) => {
     const id = Number(req.params.id)
     getBookById(id).then(book => {
