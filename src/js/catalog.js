@@ -10,6 +10,10 @@ async function getBooks() {
 function createBookCard(book) {
     const card = bookCardTemplate.content.cloneNode(true)
 
+    card.addEventListener("click", () => {
+        window.location.href = `/catalog/${book.id}`
+    })
+    
     card.id = `book-${book.id}`
     // console.log(card.id.substring(5)) - just to verify that the id is being set correctly
 
