@@ -19,6 +19,12 @@ app.use(express.urlencoded({ extended: true }))
 
 const port = 3000
 
+function getBookById(id) {
+    return pool.query("select * from books where id = ?", [id]).then(result => {
+        return result[0][0]
+    })
+}
+
 function validateData(input) {
     if ( (typeof input != "string") || (input == undefined || input.trim() == "")) {
         return false
@@ -48,9 +54,12 @@ app.get("/books", (req,res) => {
 
 app.get("/books/:id", (req,res) => {
     const id = Number(req.params.id)
-    pool.query("select * from books where id = ?", [id]).then(result => {
-        res.json(result[0].length == 0 ? {"message": "not found"} : result[0])
-    }) 
+    getBookById(id).then(book => {
+        if (book == undefined) {
+            return res.status(404).json({"message": "Book not found"})
+        }
+        res.json(book)
+    })
 })
 
 app.post("/books", async (req, res) => {
