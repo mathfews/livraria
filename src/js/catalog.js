@@ -9,6 +9,10 @@ async function getBooks() {
 
 function createBookCard(book) {
     const card = bookCardTemplate.content.cloneNode(true)
+
+    card.id = `book-${book.id}`
+    // console.log(card.id.substring(5)) - just to verify that the id is being set correctly
+
     const bookCover = card.querySelector(".book-cover")
     const year = card.querySelector("[data-book-year]")
 
