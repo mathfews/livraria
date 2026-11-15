@@ -1,7 +1,7 @@
 /* book-details.css — Styles for the static book details page */
 
 .page-container > .btn-back {
-  margin-bottom: var(--space-32);
+  margin-bottom: 0px;
 }
 
 .book-detail {
@@ -28,7 +28,15 @@
   background-color: var(--color-surface-paper);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: centert;
+}
+
+.book-detail-cover-well {
+  padding-left: 0;
+}
+
+section.book-detail {
+  margin: 0;
 }
 
 .book-cover.book-detail-cover {
