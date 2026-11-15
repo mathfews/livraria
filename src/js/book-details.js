@@ -33,6 +33,5 @@ await getBookById(id)
         displayBookDetails(book)
     })
     .catch(error => {
-        console.error(error)
-        // window.location.href = "/404.html"
+        window.location.href = "/404.html"
     })
