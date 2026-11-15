@@ -113,6 +113,23 @@
   font-size: 14px;
 }
 
+.book-detail-publisher {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.8fr) minmax(0, 1.2fr);
+  gap: var(--space-16);
+  padding: var(--space-16) 0;
+  font-size: 14px;
+}
+
+.book-detail-publisher dt {
+  color: var(--color-text-secondary);
+}
+
+.book-detail-publisher dd {
+  color: var(--color-text-ink);
+  font-weight: 600;
+}
+
 .book-detail-fact dt {
   color: var(--color-text-secondary);
 }
