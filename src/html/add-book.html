@@ -166,18 +166,32 @@
   </footer>
 
   <dialog class="add-book-dialog" id="bookAddedDialog" aria-labelledby="bookAddedTitle" aria-describedby="bookAddedMessage">
-    <div class="add-book-dialog-header">
-      <div class="add-book-success-icon" aria-hidden="true">
-        <img src="../assets/icons/book-check.svg" alt="">
+    <button type="button" class="dialog-close-btn add-book-dialog-close" id="closeBookAddedDialog" aria-label="Close confirmation" onclick="document.getElementById('bookAddedDialog').close()">
+      <img src="../assets/icons/x.svg" alt="" aria-hidden="true">
+    </button>
+    <div class="add-book-dialog-layout">
+      <div class="add-book-dialog-cover-wrap" aria-hidden="true">
+        <div class="add-book-dialog-cover">
+          <img class="add-book-dialog-cover-img" id="addedBookCoverImage" alt="" hidden>
+        </div>
+        <span class="add-book-dialog-success">
+          <img src="../assets/icons/check.svg" alt="">
+        </span>
       </div>
-      <button type="button" class="dialog-close-btn" id="closeBookAddedDialog" aria-label="Close confirmation" onclick="document.getElementById('bookAddedDialog').close()">
-        <img src="../assets/icons/x.svg" alt="" aria-hidden="true">
-      </button>
+      <div class="add-book-dialog-content">
+        <h2 class="add-book-dialog-title" id="bookAddedTitle">Book added!</h2>
+        <p class="add-book-dialog-message" id="bookAddedMessage">
+          “<strong id="addedBookTitle"></strong>” is now on your shelf.
+        </p>
+        <div class="add-book-dialog-actions">
+          <a class="btn btn-primary" href="/catalog">
+            <img src="../assets/icons/arrow-right.svg" alt="" aria-hidden="true">
+            View my library
+          </a>
+          <button type="button" class="add-book-dialog-secondary" id="addAnotherBookBtn">Add another book</button>
+        </div>
+      </div>
     </div>
-    <p class="overline">A new story on your shelf</p>
-    <h2 class="add-book-dialog-title" id="bookAddedTitle">Book added!</h2>
-    <p class="add-book-dialog-message" id="bookAddedMessage"></p>
-    <a class="btn btn-primary" href="/catalog">View my library</a>
   </dialog>
 
   <script type="module" src="../js/add-book.js"></script>

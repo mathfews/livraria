@@ -1,5 +1,7 @@
 import "./global.js"
 
+window.showDialog = showDialog
+
 const titleInput = document.getElementById("bookTitle")
 const authorInput = document.getElementById("bookAuthor")
 const isbnInput = document.getElementById("bookIsbn")
@@ -13,8 +15,10 @@ const previewAuthor = document.getElementById("previewAuthor")
 const previewImage = document.getElementById("previewImg")
 const submitBookButton = document.getElementById("submitBtn")
 const bookAddedDialog = document.getElementById("bookAddedDialog")
-const bookAddedMessage = document.getElementById("bookAddedMessage")
+const addedBookTitle = document.getElementById("addedBookTitle")
+const addedBookCoverImage = document.getElementById("addedBookCoverImage")
 const closeBookAddedDialog = document.getElementById("closeBookAddedDialog")
+const addAnotherBookButton = document.getElementById("addAnotherBookBtn")
 const addBookError = document.getElementById("addBookError")
 
 const inputs = [titleInput, authorInput, coverUrlInput, isbnInput, publisherInput, dateInput, descriptionInput]
@@ -64,6 +68,15 @@ function updateSubmitButton() {
   submitButton.classList.toggle("btn-primary", canSubmit)
 }
 
+function showDialog() {
+  const data = getBookData()
+  bookWasAdded = true
+  addedBookTitle.textContent = data.title
+  addedBookCoverImage.src = data.cover_url
+  addedBookCoverImage.hidden = false
+  bookAddedDialog.showModal()
+}
+
 async function addBook() {
   if (isSubmitting || bookWasAdded || submitButton.disabled) return
 
@@ -86,7 +99,9 @@ async function addBook() {
     }
 
     bookWasAdded = true
-    bookAddedMessage.textContent = `“${data.title}” is now part of your personal library.`
+    addedBookTitle.textContent = data.title
+    addedBookCoverImage.src = data.cover_url
+    addedBookCoverImage.hidden = false
     bookAddedDialog.showModal()
   } catch (error) {
     console.error("Could not add book:", error)
@@ -99,6 +114,19 @@ async function addBook() {
 
 submitBookButton.addEventListener("click", addBook)
 closeBookAddedDialog.addEventListener("click", () => bookAddedDialog.close())
+addAnotherBookButton.addEventListener("click", () => {
+  inputs.forEach(input => {
+    input.value = ""
+  })
+  addedBookCoverImage.removeAttribute("src")
+  addedBookCoverImage.hidden = true
+  bookWasAdded = false
+  addBookError.hidden = true
+  updatePreview()
+  updateSubmitButton()
+  bookAddedDialog.close()
+  titleInput.focus()
+})
 bookAddedDialog.addEventListener("click", event => {
   if (event.target === bookAddedDialog) bookAddedDialog.close()
 })
@@ -118,6 +146,9 @@ function getBookData() {
 coverUrlInput.addEventListener("input", updatePreview)
 previewImage.addEventListener("error", () => {
   previewImage.hidden = true
+})
+addedBookCoverImage.addEventListener("error", () => {
+  addedBookCoverImage.hidden = true
 })
 
 updatePreview()
