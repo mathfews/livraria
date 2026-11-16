@@ -22,7 +22,6 @@
 }
 
 .book-detail-cover-well {
-  min-height: 560px;
   padding: var(--space-32);
   border-radius: var(--radius-card);
   display: flex;
