@@ -92,6 +92,87 @@
   width: 100%;
 }
 
+.add-book-error {
+  color: var(--color-destructive);
+  font-size: 13px;
+  text-align: right;
+}
+
+.add-book-dialog {
+  width: min(440px, calc(100% - 32px));
+  margin: auto;
+  padding: var(--space-32);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-card);
+  background-color: var(--color-surface-white);
+  color: var(--color-text-ink);
+  box-shadow: var(--shadow-card);
+}
+
+.add-book-dialog::backdrop {
+  background-color: rgba(48, 41, 35, 0.4);
+  backdrop-filter: blur(2px);
+}
+
+.add-book-dialog[open] {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-16);
+  animation: add-book-dialog-enter 0.2s ease-out;
+}
+
+.add-book-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: var(--space-8);
+}
+
+.add-book-success-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface-warm);
+}
+
+.add-book-success-icon img {
+  width: 28px;
+  height: 28px;
+}
+
+.add-book-dialog-title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  line-height: 1.15;
+}
+
+.add-book-dialog-message {
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: var(--space-8);
+}
+
+.add-book-dialog .btn {
+  align-self: stretch;
+}
+
+@keyframes add-book-dialog-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Responsive Breakpoints */
 @media (max-width: 768px) {
   .form-layout {
@@ -112,6 +193,9 @@
     width: 100%;
   }
   .form-actions-guidance {
+    text-align: center;
+  }
+  .add-book-error {
     text-align: center;
   }
 }

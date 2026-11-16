@@ -12,10 +12,16 @@ const previewTitle = document.getElementById("previewTitle")
 const previewAuthor = document.getElementById("previewAuthor")
 const previewImage = document.getElementById("previewImg")
 const submitBookButton = document.getElementById("submitBtn")
+const bookAddedDialog = document.getElementById("bookAddedDialog")
+const bookAddedMessage = document.getElementById("bookAddedMessage")
+const closeBookAddedDialog = document.getElementById("closeBookAddedDialog")
+const addBookError = document.getElementById("addBookError")
 
 const inputs = [titleInput, authorInput, coverUrlInput, isbnInput, publisherInput, dateInput, descriptionInput]
 
 const preview_inputs = [titleInput, authorInput, coverUrlInput]
+let isSubmitting = false
+let bookWasAdded = false
 
 preview_inputs.forEach(input => {
   input.addEventListener("input", () => {
@@ -50,9 +56,7 @@ function updatePreview() {
 }
 
 function updateSubmitButton() {
-  const canSubmit = inputs.every(input => input.value.trim() !== "")
-
-  console.log(canSubmit)
+  const canSubmit = inputs.every(input => input.value.trim() !== "") && !isSubmitting && !bookWasAdded
 
   submitButton.disabled = !canSubmit
 
@@ -61,17 +65,43 @@ function updateSubmitButton() {
 }
 
 async function addBook() {
+  if (isSubmitting || bookWasAdded || submitButton.disabled) return
+
+  isSubmitting = true
+  addBookError.hidden = true
+  updateSubmitButton()
+
   const data = getBookData()
-  const response = await fetch("/books", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-  })
+  try {
+    const response = await fetch("/books", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+
+    if (!response.ok) {
+      throw new Error(`Could not add book (${response.status})`)
+    }
+
+    bookWasAdded = true
+    bookAddedMessage.textContent = `“${data.title}” is now part of your personal library.`
+    bookAddedDialog.showModal()
+  } catch (error) {
+    console.error("Could not add book:", error)
+    addBookError.hidden = false
+  } finally {
+    isSubmitting = false
+    updateSubmitButton()
+  }
 }
 
 submitBookButton.addEventListener("click", addBook)
+closeBookAddedDialog.addEventListener("click", () => bookAddedDialog.close())
+bookAddedDialog.addEventListener("click", event => {
+  if (event.target === bookAddedDialog) bookAddedDialog.close()
+})
 
 function getBookData() {
   return {

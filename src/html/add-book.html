@@ -152,6 +152,9 @@
             <span>Add book</span>
           </button>
         </div>
+        <p class="add-book-error" id="addBookError" role="alert" hidden>
+          We couldn’t add this book. Please try again.
+        </p>
       </footer>
     </section>
   </main>
@@ -161,6 +164,21 @@
     <p class="footer-title">Livraria · Your own little library</p>
     <p class="footer-tagline">A quiet place for your books.</p>
   </footer>
+
+  <dialog class="add-book-dialog" id="bookAddedDialog" aria-labelledby="bookAddedTitle" aria-describedby="bookAddedMessage">
+    <div class="add-book-dialog-header">
+      <div class="add-book-success-icon" aria-hidden="true">
+        <img src="../assets/icons/book-check.svg" alt="">
+      </div>
+      <button type="button" class="dialog-close-btn" id="closeBookAddedDialog" aria-label="Close confirmation" onclick="document.getElementById('bookAddedDialog').close()">
+        <img src="../assets/icons/x.svg" alt="" aria-hidden="true">
+      </button>
+    </div>
+    <p class="overline">A new story on your shelf</p>
+    <h2 class="add-book-dialog-title" id="bookAddedTitle">Book added!</h2>
+    <p class="add-book-dialog-message" id="bookAddedMessage"></p>
+    <a class="btn btn-primary" href="/catalog">View my library</a>
+  </dialog>
 
   <script type="module" src="../js/add-book.js"></script>
 </body>
