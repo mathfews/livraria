@@ -17,10 +17,12 @@ function displayBookDetails(book) {
     const bookAuthor = document.querySelector(".book-detail-fact-author dd")
     const bookPublisher = document.querySelector(".book-detail-fact-publisher dd")
     const bookPublicationYear = document.querySelector(".book-detail-fact-publication-year dd")
+    const bookIsbn = document.querySelector(".book-detail-fact-isbn dd")
 
     bookAuthor.textContent = book.author
     bookPublisher.textContent = book.publisher
     bookPublicationYear.textContent = book.publication_year
+    bookIsbn.textContent = book.isbn
 
     bookCover.style.backgroundImage = `url(${book.cover_url})`
     bookCover.style.backgroundSize = "cover"
