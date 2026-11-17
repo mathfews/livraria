@@ -46,5 +46,5 @@ books.forEach(book => {
 
 const targetId = window.location.hash.slice(1)
 if (targetId) {
-    document.getElementById(targetId)?.scrollIntoView({ block: "center" })
+    document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "center" })
 }
