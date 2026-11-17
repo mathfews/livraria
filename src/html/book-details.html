@@ -104,6 +104,35 @@
     <p class="footer-tagline">A quiet place for your books.</p>
   </footer>
 
+  <dialog class="delete-book-dialog" id="deleteBookDialog" aria-labelledby="deleteBookDialogTitle" aria-describedby="deleteBookDialogMessage">
+    <button type="button" class="dialog-close-btn delete-book-dialog-close" id="closeDeleteBookDialog" aria-label="Close confirmation">
+      <img src="../assets/icons/x.svg" alt="" aria-hidden="true">
+    </button>
+    <div class="delete-book-dialog-layout">
+      <div class="delete-book-dialog-cover-wrap" aria-hidden="true">
+        <div class="delete-book-dialog-cover">
+          <img class="delete-book-dialog-cover-img" id="deleteBookCoverImage" alt="" hidden>
+        </div>
+        <span class="delete-book-dialog-badge">
+          <img src="../assets/icons/trash-2.svg" alt="">
+        </span>
+      </div>
+      <div class="delete-book-dialog-content">
+        <h2 class="delete-book-dialog-title" id="deleteBookDialogTitle">Delete book?</h2>
+        <p class="delete-book-dialog-message" id="deleteBookDialogMessage">
+          “<strong id="deleteBookTitle">this book</strong>” will be removed from your library. This can’t be undone.
+        </p>
+        <p class="delete-book-dialog-error" id="deleteBookError" role="alert" hidden>
+          We couldn’t delete this book. Please try again.
+        </p>
+        <div class="delete-book-dialog-actions">
+          <button type="button" class="btn btn-destructive" id="confirmDeleteBookBtn">Yes, delete</button>
+          <button type="button" class="btn btn-secondary" id="cancelDeleteBookBtn">Keep book</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
   <script type="module" src="../js/book-details.js"></script>
 </body>
 </html>

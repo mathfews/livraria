@@ -77,7 +77,6 @@ function showDialog() {
   addedBookCoverImage.hidden = false
   bookAddedDialog.showModal()
   bookAddedDialog.addEventListener("click", event => {
-    console.log(event.target == bookAddedDialog)
     if (event.target == bookAddedDialog) {
       bookAddedDialog.close()
     }
