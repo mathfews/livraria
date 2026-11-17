@@ -20,6 +20,7 @@ const addedBookCoverImage = document.getElementById("addedBookCoverImage")
 const closeBookAddedDialog = document.getElementById("closeBookAddedDialog")
 const addAnotherBookButton = document.getElementById("addAnotherBookBtn")
 const addBookError = document.getElementById("addBookError")
+const viewLibraryBtn = document.getElementById("viewLibraryBtn")
 
 const inputs = [titleInput, authorInput, coverUrlInput, isbnInput, publisherInput, dateInput, descriptionInput]
 
@@ -83,8 +84,6 @@ function showDialog() {
   })
 }
 
-showDialog()
-
 async function addBook() {
   if (isSubmitting || bookWasAdded || submitButton.disabled) return
 
@@ -106,6 +105,8 @@ async function addBook() {
       throw new Error(`Could not add book (${response.status})`)
     }
 
+    const { id } = await response.json()
+    viewLibraryBtn.href = `/catalog#book-${id}`
     bookWasAdded = true
     addedBookTitle.textContent = data.title
     addedBookCoverImage.src = data.cover_url
@@ -126,6 +127,7 @@ addAnotherBookButton.addEventListener("click", () => {
   inputs.forEach(input => {
     input.value = ""
   })
+  viewLibraryBtn.removeAttribute("href")
   addedBookCoverImage.removeAttribute("src")
   addedBookCoverImage.hidden = true
   bookWasAdded = false

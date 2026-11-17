@@ -93,9 +93,11 @@ app.post("/books", async (req, res) => {
         return res.status(400).end()
     }
 
-    await pool.query(`insert into books (${allowedColumnsNames.join(", ")}) values (${allowedColumnsNames.map(() => "?").join(", ")})`, allowedColumnsNames.map((name) => body[name].trim())).then( () => {
-        res.status(201).end()
-    })
+    const [result] = await pool.query(
+        `insert into books (${allowedColumnsNames.join(", ")}) values (${allowedColumnsNames.map(() => "?").join(", ")})`,
+        allowedColumnsNames.map((name) => body[name].trim())
+    )
+    res.status(201).json({ id: result.insertId })
 })
 
 app.delete("/books/:id", async (req, res) => {

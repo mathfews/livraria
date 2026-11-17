@@ -43,3 +43,8 @@ const books = await getBooks()
 books.forEach(book => {
     booksGrid.appendChild(createBookCard(book))
 })
+
+const targetId = window.location.hash.slice(1)
+if (targetId) {
+    document.getElementById(targetId)?.scrollIntoView({ block: "center" })
+}
