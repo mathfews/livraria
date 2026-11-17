@@ -75,7 +75,15 @@ function showDialog() {
   addedBookCoverImage.src = data.cover_url
   addedBookCoverImage.hidden = false
   bookAddedDialog.showModal()
+  bookAddedDialog.addEventListener("click", event => {
+    console.log(event.target == bookAddedDialog)
+    if (event.target == bookAddedDialog) {
+      bookAddedDialog.close()
+    }
+  })
 }
+
+showDialog()
 
 async function addBook() {
   if (isSubmitting || bookWasAdded || submitButton.disabled) return
